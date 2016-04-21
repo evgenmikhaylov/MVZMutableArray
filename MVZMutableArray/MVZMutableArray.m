@@ -1,6 +1,6 @@
 //
 //  MVZMutableArray.m
-//  MVVMSample
+//  MVZMutableArray, https://github.com/medvedzzz/MVZMutableArray
 //
 //  Created by Evgeny Mikhaylov on 22/03/16.
 //  Copyright © 2016 Evgeny Mikhaylov. All rights reserved.
