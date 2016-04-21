@@ -15,8 +15,8 @@
 @property (nonatomic, copy) NSArray<ObjectType> *mvz_objects;
 @property (nonatomic, readonly) RACSignal *mvz_objectsSignal;
 
-+ (instancetype)array;
-+ (instancetype)arrayWithObjects:(NSArray<ObjectType> *)objects;
++ (instancetype)mvz_array;
++ (instancetype)mvz_arrayWithObjects:(NSArray<ObjectType> *)objects;
 
 - (void)mvz_addObject:(ObjectType)object;
 - (void)mvz_insertObject:(ObjectType)object atIndex:(NSUInteger)index;
@@ -37,9 +37,9 @@
 @interface MVZMutableArrayChange<__covariant ObjectType> : NSObject
 
 @property (nonatomic, copy) NSArray<ObjectType> *mvz_objects;
-@property (nonatomic) NSKeyValueChange mvz_changeType;
 @property (nonatomic, copy) NSArray<ObjectType> *mvz_newObjects;
 @property (nonatomic, copy) NSArray<ObjectType> *mvz_oldObjects;
 @property (nonatomic, copy) NSIndexSet *mvz_indexes;
+@property (nonatomic) NSKeyValueChange mvz_changeType;
 
 @end

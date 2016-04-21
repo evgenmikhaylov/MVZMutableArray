@@ -19,14 +19,14 @@
 
 #pragma mark - Initialize
 
-+ (instancetype)array {
++ (instancetype)mvz_array {
     
     return [[self alloc] init];
 }
 
-+ (instancetype)arrayWithObjects:(NSArray *)objects {
++ (instancetype)mvz_arrayWithObjects:(NSArray *)objects {
     
-    MVZMutableArray *array = [self array];
+    MVZMutableArray *array = [self mvz_array];
     array.mvz_objects = objects;
     return array;
 }
