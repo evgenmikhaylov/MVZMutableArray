@@ -48,9 +48,9 @@
 
 - (RACSignal *)mvz_objectsSignal {
     
-    return [[self rac_valuesAndChangesForKeyPath:@keypath(self, mvz_objects)
-                                        options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld
-                                       observer:nil] map:^id(RACTuple *value) {
+    return [[[self rac_valuesAndChangesForKeyPath:@keypath(self, mvz_objects)
+                                          options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld
+                                         observer:nil] map:^id(RACTuple *value) {
         MVZMutableArrayChange *change = [[MVZMutableArrayChange alloc] init];
         change.mvz_objects = value.first;
         change.mvz_changeType = [value.second[NSKeyValueChangeKindKey] unsignedIntegerValue];
@@ -58,7 +58,15 @@
         change.mvz_oldObjects = value.second[NSKeyValueChangeOldKey];
         change.mvz_indexes = value.second[NSKeyValueChangeIndexesKey];
         return change;
-    }];
+    }] startWith:[self initialObjectsSignalValue]];
+}
+
+- (MVZMutableArrayChange *)initialObjectsSignalValue {
+    MVZMutableArrayChange *change = [[MVZMutableArrayChange alloc] init];
+    change.mvz_objects = self.mvz_objects;
+    change.mvz_changeType = NSKeyValueChangeSetting;
+    change.mvz_oldObjects = self.mvz_objects;
+    return change;
 }
 
 #pragma mark - Object
